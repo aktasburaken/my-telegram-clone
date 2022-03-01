@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "telegram-clone-ui",
+    "slug": "telegram-clone-ui",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "telegram-clone-ui"
+}
