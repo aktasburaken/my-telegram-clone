@@ -4,16 +4,20 @@ import {
     DrawerContentScrollView,
 } from '@react-navigation/drawer'
 
-
 //image
 import Avatar from '../assets/girlPhoto.jpg'
 
 //Icon
 import Icon from '@expo/vector-icons/FontAwesome';
 
-
+// Components
+import MenuItem from '../components/MenuItem';
 
 export default function DrawerContent() {
+
+    const sideMenuItems = [{ id: 1, name: "New Groups", icon: "group" }, { id: 2, name: "Contacts", icon: "user" },
+    { id: 3, name: "Calls", icon: "phone" }, { id: 4, name: "People Nearby", icon: "map" }, { id: 5, name: "Saved Messages", icon: "bookmark" }]
+
     return (
         <View style={{ flex: 9, }}>
             <View style={styles.topSide}>
@@ -25,54 +29,13 @@ export default function DrawerContent() {
 
                 </View>
                 <Text style={{ color: '#fff', marginLeft: 15, marginTop: 15, fontWeight: 'bold', }}>Adele</Text>
-                <Text style={{ color: '#E6E9EF', marginLeft: 15, }}> +90 (536) 170 89 98</Text>
+                <Text style={{ color: '#E6E9EF', marginLeft: 15, }}>+90 (536) 170 89 98</Text>
             </View>
             <View style={{ flex: 7.3, }}>
-                <TouchableHighlight onPress={() => { }}
-                    underlayColor='gray'
-                >
-                    <View style={styles.button}>
-                        <Icon name='group' size={25} color="#000" style={styles.icons} />
-                        <Text style={styles.iconText}>New Groups</Text>
-                    </View>
 
-                </TouchableHighlight>
-                <TouchableHighlight onPress={() => { }}
-                    underlayColor='gray'
-                >
-                    <View style={styles.button}>
-                        <Icon name='user' size={25} color="#000" style={styles.icons} />
-                        <Text style={styles.iconText}>Contacts</Text>
-                    </View>
-
-                </TouchableHighlight>
-                <TouchableHighlight onPress={() => { }}
-                    underlayColor='gray'
-                >
-                    <View style={styles.button}>
-                        <Icon name='phone' size={25} color="#000" style={styles.icons} />
-                        <Text style={styles.iconText}>Calls</Text>
-                    </View>
-
-                </TouchableHighlight>
-                <TouchableHighlight onPress={() => { }}
-                    underlayColor='gray'
-                >
-                    <View style={styles.button}>
-                        <Icon name='map' size={25} color="#000" style={styles.icons} />
-                        <Text style={styles.iconText}>People Nearby</Text>
-                    </View>
-
-                </TouchableHighlight>
-                <TouchableHighlight onPress={() => { }}
-                    underlayColor='gray'
-                >
-                    <View style={styles.button}>
-                        <Icon name='bookmark' size={25} color="#000" style={styles.icons} />
-                        <Text style={styles.iconText}>Saved Messages</Text>
-                    </View>
-
-                </TouchableHighlight>
+                {sideMenuItems.map((item) => (
+                    <MenuItem key={item.id} itemName={item.name} iconName={item.icon} />
+                ))}
                 <TouchableHighlight onPress={() => { }}
                     underlayColor='gray'
                 >
@@ -133,7 +96,6 @@ const styles = StyleSheet.create({
     },
     button: {
         flexDirection: 'row',
-        display: 'flex',
         alignItems: 'center',
         height: 50,
         width: '100%',
@@ -141,7 +103,6 @@ const styles = StyleSheet.create({
     },
     buttonBorder: {
         flexDirection: 'row',
-        display: 'flex',
         alignItems: 'center',
         height: 50,
         width: '100%',
